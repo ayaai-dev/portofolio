@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio profesional Natasya Nuril Maulida — Pelajar | Creative & Digital Enthusiast." />
+  <meta name="keywords" content="Natasya Nuril Maulida, portfolio, UI UX, desain grafis, HTML CSS, creative digital" />
+  <meta name="author" content="Natasya Nuril Maulida" />
+  <meta property="og:title" content="Natasya Nuril Maulida — Portfolio" />
+  <meta property="og:description" content="Pelajar yang tertarik pada desain, teknologi, dan kreativitas digital." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#090712" />
+  <title>Natasya Nuril Maulida — Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #090712;
+      --bg-soft: #100c1c;
+      --surface: rgba(22, 16, 38, .78);
+      --surface-solid: #171026;
+      --surface-2: #201638;
+      --text: #f8f5ff;
+      --muted: #b8aecb;
+      --line: rgba(255,255,255,.10);
+      --primary: #9b5cff;
+      --primary-2: #c084fc;
+      --accent: #e879f9;
+      --success: #8bffcf;
+      --shadow: 0 24px 70px rgba(0,0,0,.35);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    html.light {
+      --bg: #f8f6fc;
+      --bg-soft: #efebf7;
+      --surface: rgba(255,255,255,.82);
+      --surface-solid: #ffffff;
+      --surface-2: #eee7fa;
+      --text: #17121f;
+      --muted: #655b72;
+      --line: rgba(30,18,45,.11);
+      --primary: #7c3aed;
+      --primary-2: #a855f7;
+      --accent: #c026d3;
+      --shadow: 0 24px 70px rgba(66, 35, 105, .13);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 85% 5%, rgba(155,92,255,.16), transparent 28rem),
+        radial-gradient(circle at 5% 35%, rgba(232,121,249,.09), transparent 25rem),
+        var(--bg);
+      font-family: "Manrope", system-ui, sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+    body.modal-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button { cursor: pointer; }
+    img { max-width: 100%; display: block; }
+    section { scroll-margin-top: 92px; }
+
+    .skip-link {
+      position: fixed; left: 1rem; top: -100px; z-index: 9999;
+      background: var(--text); color: var(--bg); padding: .7rem 1rem;
+      border-radius: 10px; font-weight: 800;
+    }
+    .skip-link:focus { top: 1rem; }
+
+    .container { width: min(calc(100% - 2rem), var(--max)); margin-inline: auto; }
+    .section { padding: 105px 0; position: relative; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      color: var(--primary-2); font-size: .8rem; font-weight: 800;
+      letter-spacing: .14em; text-transform: uppercase;
+    }
+    .eyebrow::before { content:""; width: 28px; height: 1px; background: currentColor; }
+    .section-head { max-width: 680px; margin-bottom: 46px; }
+    h1,h2,h3 { font-family: "Space Grotesk", system-ui, sans-serif; line-height: 1.1; margin: 0; }
+    h2 { font-size: clamp(2rem, 5vw, 3.2rem); margin-top: .7rem; letter-spacing: -.04em; }
+    p { color: var(--muted); }
+
+    /* Navbar */
+    .nav-wrap {
+      position: fixed; inset: 0 0 auto; z-index: 1000; padding: 14px 0;
+      background: linear-gradient(to bottom, rgba(9,7,18,.92), transparent);
+      backdrop-filter: blur(12px);
+    }
+    html.light .nav-wrap { background: linear-gradient(to bottom, rgba(248,246,252,.94), transparent); }
+    nav {
+      width: min(calc(100% - 2rem), var(--max)); margin: auto;
+      min-height: 62px; padding: 0 10px 0 18px; display: flex; align-items: center; justify-content: space-between;
+      border: 1px solid var(--line); border-radius: 18px; background: var(--surface);
+      backdrop-filter: blur(20px); box-shadow: var(--shadow);
+    }
+    .brand { display: flex; align-items: center; gap: .75rem; font-weight: 800; }
+    .brand-mark {
+      width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--primary), var(--accent)); color: white;
+      box-shadow: 0 10px 30px rgba(155,92,255,.25);
+    }
+    .nav-links { display: flex; align-items: center; gap: .25rem; }
+    .nav-links a { padding: .65rem .8rem; border-radius: 10px; color: var(--muted); font-size: .9rem; font-weight: 700; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--surface-2); }
+    .nav-actions { display: flex; align-items: center; gap: .5rem; }
+    .icon-btn, .menu-btn {
+      width: 42px; height: 42px; border: 1px solid var(--line); border-radius: 12px;
+      background: var(--surface-solid); color: var(--text); display: grid; place-items: center;
+    }
+    .menu-btn { display: none; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+      min-height: 46px; padding: .8rem 1.1rem; border: 1px solid transparent; border-radius: 13px;
+      font-weight: 800; transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: white; background: linear-gradient(135deg, var(--primary), var(--accent)); box-shadow: 0 14px 35px rgba(155,92,255,.25); }
+    .btn-secondary { border-color: var(--line); background: var(--surface); }
+
+    /* Hero */
+    .hero { min-height: 100vh; display: grid; place-items: center; padding: 140px 0 80px; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 5rem; }
+    .hero h1 { font-size: clamp(3rem, 7vw, 6.3rem); letter-spacing: -.065em; margin: 1rem 0; }
+    .gradient-text { background: linear-gradient(100deg, #fff, var(--primary-2), var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    html.light .gradient-text { background: linear-gradient(100deg, #21142e, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; }
+    .typing { min-height: 1.6em; color: var(--primary-2); font-weight: 800; font-size: clamp(1.05rem, 2vw, 1.35rem); }
+    .typing::after { content: "|"; margin-left: 2px; animation: blink 1s infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .hero-copy { max-width: 650px; font-size: 1.06rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.8rem; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.5rem; color: var(--muted); font-size: .9rem; }
+    .hero-meta span { display: inline-flex; align-items: center; gap: .45rem; }
+    .hero-meta i { width: 7px; height: 7px; border-radius: 50%; background: var(--success); box-shadow: 0 0 14px var(--success); }
+
+    .portrait-wrap { position: relative; width: min(440px, 90vw); margin-inline: auto; }
+    .portrait-glow { position: absolute; inset: 7%; background: linear-gradient(135deg, var(--primary), var(--accent)); filter: blur(45px); opacity: .28; }
+    .portrait-frame {
+      position: relative; padding: 10px; border-radius: 38px;
+      background: linear-gradient(145deg, rgba(255,255,255,.35), rgba(255,255,255,.05));
+      border: 1px solid rgba(255,255,255,.16); box-shadow: var(--shadow);
+    }
+    .portrait {
+      aspect-ratio: 4 / 5; object-fit: cover; width: 100%; border-radius: 30px;
+      object-position: center top; background: linear-gradient(135deg, #271742, #0e0918);
+    }
+    .portrait-badge {
+      position: absolute; right: -20px; bottom: 28px; max-width: 220px;
+      padding: .85rem 1rem; border: 1px solid var(--line); border-radius: 17px;
+      background: var(--surface); backdrop-filter: blur(18px); box-shadow: var(--shadow);
+    }
+    .portrait-badge strong { display: block; }
+    .portrait-badge small { color: var(--muted); }
+
+    /* Cards / about */
+    .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 1.2rem; }
+    .glass { border: 1px solid var(--line); background: var(--surface); backdrop-filter: blur(16px); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .about-card { padding: clamp(1.4rem, 4vw, 2.3rem); }
+    .about-card p { font-size: 1.03rem; }
+    .stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 1rem; }
+    .stat { padding: 1.35rem; }
+    .stat strong { display:block; font-family:"Space Grotesk"; font-size: 2.2rem; }
+    .stat span { color: var(--muted); font-size: .85rem; }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .skill-card { padding: 1.5rem; }
+    .skill-row { margin-bottom: 1.2rem; }
+    .skill-top { display:flex; justify-content:space-between; gap: 1rem; margin-bottom: .5rem; font-weight: 800; }
+    .skill-top span:last-child { color: var(--primary-2); }
+    .bar { height: 8px; border-radius: 99px; background: var(--surface-2); overflow: hidden; }
+    .bar i { display:block; height:100%; width:0; border-radius:inherit; background: linear-gradient(90deg,var(--primary),var(--accent)); transition: width 1s cubic-bezier(.2,.8,.2,1); }
+    .badges { display:flex; flex-wrap:wrap; gap:.65rem; }
+    .badge { padding:.65rem .85rem; border-radius:999px; background:var(--surface-2); border:1px solid var(--line); font-weight:700; color:var(--muted); }
+
+    /* Timeline */
+    .timeline { position:relative; max-width:900px; margin:auto; }
+    .timeline::before { content:""; position:absolute; left:10px; top:0; bottom:0; width:1px; background:var(--line); }
+    .timeline-item { position:relative; padding:0 0 2rem 42px; }
+    .timeline-dot { position:absolute; left:4px; top:5px; width:13px; height:13px; border-radius:50%; background:var(--primary); box-shadow:0 0 0 5px rgba(155,92,255,.13); }
+    .timeline-card { padding:1.35rem 1.5rem; }
+    .timeline-card .year { color:var(--primary-2); font-size:.82rem; font-weight:800; }
+    .timeline-card h3 { margin:.3rem 0; font-size:1.15rem; }
+    .timeline-card p { margin:.3rem 0 0; font-size:.93rem; }
+
+    /* Projects */
+    .filter { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:1.5rem; }
+    .filter button { border:1px solid var(--line); background:var(--surface); color:var(--muted); border-radius:999px; padding:.65rem .9rem; font-weight:800; }
+    .filter button.active, .filter button:hover { color:var(--text); border-color:rgba(155,92,255,.5); background:var(--surface-2); }
+    .project-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    .project { overflow:hidden; transition:transform .25s ease, border-color .25s ease; cursor:pointer; }
+    .project:hover { transform:translateY(-5px); border-color:rgba(155,92,255,.45); }
+    .project-media { aspect-ratio:16/9; overflow:hidden; background:linear-gradient(135deg,#28183f,#100a1b); }
+    .project-media img { width:100%; height:100%; object-fit:cover; transition:transform .45s ease; }
+    .project:hover img { transform:scale(1.05); }
+    .project-body { padding:1.2rem; }
+    .project-tag { color:var(--primary-2); font-size:.75rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; }
+    .project h3 { margin:.35rem 0; font-size:1.2rem; }
+    .project p { font-size:.9rem; margin:.35rem 0 1rem; }
+    .tools { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .tools span { font-size:.72rem; padding:.35rem .55rem; background:var(--surface-2); border-radius:7px; color:var(--muted); }
+
+    /* Contact */
+    .contact-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:1rem; }
+    .contact-card { padding:1.5rem; }
+    .contact-list { display:grid; gap:.7rem; margin-top:1.5rem; }
+    .contact-link { display:flex; align-items:center; gap:.8rem; padding:.8rem; border-radius:12px; background:var(--surface-2); color:var(--muted); }
+    .contact-link:hover { color:var(--text); }
+    .contact-icon { width:35px; height:35px; display:grid; place-items:center; border-radius:10px; background:rgba(155,92,255,.14); color:var(--primary-2); }
+    form { display:grid; gap:1rem; }
+    .field { display:grid; gap:.45rem; }
+    label { font-size:.82rem; font-weight:800; }
+    input, textarea {
+      width:100%; border:1px solid var(--line); background:var(--surface-2); color:var(--text);
+      border-radius:12px; padding:.9rem 1rem; outline:none;
+    }
+    input:focus, textarea:focus { border-color:var(--primary); box-shadow:0 0 0 4px rgba(155,92,255,.12); }
+    textarea { min-height:150px; resize:vertical; }
+
+    footer { padding:30px 0 50px; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
+    .footer-inner { display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+
+    /* Modal */
+    .modal { position:fixed; inset:0; z-index:2000; display:none; place-items:center; padding:1rem; background:rgba(0,0,0,.72); backdrop-filter:blur(8px); }
+    .modal.open { display:grid; }
+    .modal-box { width:min(720px,100%); max-height:90vh; overflow:auto; padding:1.3rem; border:1px solid var(--line); border-radius:22px; background:var(--surface-solid); box-shadow:var(--shadow); }
+    .modal-head { display:flex; justify-content:space-between; align-items:start; gap:1rem; }
+    .modal-close { width:40px; height:40px; border:1px solid var(--line); background:var(--surface-2); color:var(--text); border-radius:10px; }
+    .modal-media { margin-top:1rem; aspect-ratio:16/9; overflow:hidden; border-radius:15px; background:var(--surface-2); }
+    .modal-media img { width:100%; height:100%; object-fit:cover; }
+
+    /* Scroll reveal */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .65s ease, transform .65s ease; }
+    .reveal.show { opacity:1; transform:none; }
+
+    .orb { position:absolute; width:180px; height:180px; border-radius:50%; background:linear-gradient(135deg,var(--primary),transparent); filter:blur(40px); opacity:.13; pointer-events:none; }
+    .orb.one { top:25%; right:-90px; } .orb.two { top:65%; left:-100px; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid, .contact-grid, .skills-grid { grid-template-columns:1fr; }
+      .hero-grid { gap:3rem; }
+      .hero-copy { max-width:none; }
+      .portrait-wrap { order:-1; max-width:360px; }
+      .project-grid { grid-template-columns:repeat(2,1fr); }
+      .nav-links { position:absolute; left:1rem; right:1rem; top:72px; display:none; padding:.7rem; flex-direction:column; align-items:stretch; border:1px solid var(--line); border-radius:16px; background:var(--surface-solid); box-shadow:var(--shadow); }
+      .nav-links.open { display:flex; }
+      .nav-links a { padding:.8rem; }
+      .menu-btn { display:grid; }
+      nav .btn-primary { display:none; }
+    }
+    @media (max-width: 600px) {
+      .section { padding:80px 0; }
+      .hero { padding-top:120px; }
+      .hero h1 { font-size:clamp(2.8rem,15vw,4.4rem); }
+      .project-grid { grid-template-columns:1fr; }
+      .stats { grid-template-columns:1fr 1fr; }
+      .portrait-badge { right:-5px; bottom:15px; }
+      .brand-name { display:none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+      .reveal { opacity:1; transform:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Lewati ke konten utama</a>
+
+  <div class="nav-wrap">
+    <nav aria-label="Navigasi utama">
+      <a class="brand" href="#home" aria-label="Beranda">
+        <span class="brand-mark">N</span>
+        <span class="brand-name">Natasya.</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">Tentang</a>
+        <a href="#skills">Keahlian</a>
+        <a href="#experience">Perjalanan</a>
+        <a href="#projects">Proyek</a>
+        <a href="#contact">Kontak</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Aktifkan mode terang">☼</button>
+        <button class="menu-btn" id="menuToggle" type="button" aria-label="Buka menu" aria-expanded="false">☰</button>
+        <a class="btn btn-primary" href="#contact">Hubungi Saya</a>
+      </div>
+    </nav>
+  </div>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="orb one"></div>
+      <div class="container hero-grid">
+        <div class="reveal">
+          <span class="eyebrow">Portfolio 2026</span>
+          <h1>Natasya<br><span class="gradient-text">Nuril Maulida.</span></h1>
+          <div class="typing" id="typing" aria-live="polite"></div>
+          <p class="hero-copy">
+            Menciptakan ide, menghadirkan karya. Saya adalah pelajar yang senang mengeksplorasi desain,
+            teknologi, dan kreativitas digital untuk mengubah ide sederhana menjadi karya yang bermakna.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">Lihat Proyek ↗</a>
+            <a class="btn btn-secondary" href="#about">Kenal Saya</a>
+          </div>
+          <div class="hero-meta">
+            <span><i></i> Open to creative projects</span>
+            <span>📍 Indonesia</span>
+          </div>
+        </div>
+
+        <div class="portrait-wrap reveal">
+          <div class="portrait-glow"></div>
+          <div class="portrait-frame">
+            <!-- GANTI DI SINI jika ingin memakai file terpisah:
+                 <img src="foto-profil.jpg" alt="Foto Natasya Nuril Maulida"> -->
+            <img
+              class="portrait"
+              src="aset/foto-profil.jpg"
+              alt="Foto Natasya Nuril Maulida"
+            />
+          </div>
+          <div class="portrait-badge">
+            <strong>Creative & Digital Enthusiast</strong>
+            <small>Design · Code · Creativity</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="orb two"></div>
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Tentang Saya</span>
+          <h2>Belajar, bereksperimen, lalu <span class="gradient-text">menciptakan.</span></h2>
+        </div>
+        <div class="about-grid">
+          <article class="glass about-card reveal">
+            <p>
+              Saya adalah seorang pelajar yang memiliki ketertarikan pada desain, teknologi, dan kreativitas digital.
+              Saya senang menciptakan ide baru dan mengubahnya menjadi karya yang menarik, sederhana, dan bermakna.
+              Bagi saya, setiap ide adalah kesempatan untuk belajar, berkembang, dan menghadirkan karya terbaik.
+            </p>
+            <p>
+              Saat mengerjakan proyek, saya suka menggabungkan visual yang rapi dengan pengalaman pengguna yang mudah dipahami.
+              Saya juga terus belajar HTML, CSS, UI/UX, editing, dan berbagai tools kreatif.
+            </p>
+          </article>
+          <div class="stats reveal">
+            <div class="glass stat"><strong data-count="6">0</strong><span>Skill utama</span></div>
+            <div class="glass stat"><strong data-count="2">0</strong><span>Proyek unggulan</span></div>
+            <div class="glass stat"><strong data-count="2">0</strong><span>Tahun berkarya</span></div>
+            <div class="glass stat"><strong data-count="100">0</strong><span>% rasa ingin belajar</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Keahlian</span>
+          <h2>Tools yang membantu ide jadi <span class="gradient-text">nyata.</span></h2>
+        </div>
+        <div class="skills-grid">
+          <article class="glass skill-card reveal">
+            <div class="skill-row"><div class="skill-top"><span>Canva</span><span>90%</span></div><div class="bar"><i data-width="90%"></i></div></div>
+            <div class="skill-row"><div class="skill-top"><span>Desain Grafis</span><span>88%</span></div><div class="bar"><i data-width="88%"></i></div></div>
+            <div class="skill-row"><div class="skill-top"><span>UI/UX Design</span><span>82%</span></div><div class="bar"><i data-width="82%"></i></div></div>
+            <div class="skill-row"><div class="skill-top"><span>HTML & CSS</span><span>78%</span></div><div class="bar"><i data-width="78%"></i></div></div>
+          </article>
+          <article class="glass skill-card reveal">
+            <h3 style="margin-bottom:1rem;">Creative toolkit</h3>
+            <div class="badges">
+              <span class="badge">Canva</span><span class="badge">HTML</span><span class="badge">CSS</span>
+              <span class="badge">UI/UX</span><span class="badge">Photo Editing</span><span class="badge">Video Editing</span>
+              <span class="badge">Presentasi Digital</span><span class="badge">Creative Thinking</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Perjalanan</span>
+          <h2>Dari tugas sekolah menuju <span class="gradient-text">karya digital.</span></h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <article class="glass timeline-card">
+              <span class="year">2024 — Sekarang</span>
+              <h3>Pelajar · SMP Swastika Kapal</h3>
+              <p>Mengembangkan kemampuan desain, kreativitas, teknologi, presentasi digital, dan kerja kelompok melalui berbagai proyek sekolah.</p>
+            </article>
+          </div>
+          <div class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <article class="glass timeline-card">
+              <span class="year">2024 — Sekarang</span>
+              <h3>Creative School Project</h3>
+              <p>Mengerjakan poster, infografis, presentasi, proyek coding sederhana, serta karya visual dengan Canva dan teknologi digital.</p>
+            </article>
+          </div>
+          <div class="timeline-item reveal">
+            <span class="timeline-dot"></span>
+            <article class="glass timeline-card">
+              <span class="year">Pendidikan</span>
+              <h3>SMP Swastika Kapal · Pelajar</h3>
+              <p>Fokus pada pengembangan akademik sekaligus eksplorasi desain, informatika, komunikasi, dan kreativitas.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Proyek Unggulan</span>
+          <h2>Beberapa karya yang <span class="gradient-text">pernah dibuat.</span></h2>
+        </div>
+        <div class="filter reveal" role="group" aria-label="Filter proyek">
+          <button class="active" data-filter="all">Semua</button>
+          <button data-filter="design">Desain</button>
+          <button data-filter="coding">Coding</button>
+          <button data-filter="school">Sekolah</button>
+        </div>
+
+        <div class="project-grid">
+          <article class="glass project reveal" data-category="design school" data-title="Infografis Digital" data-description="Infografis bertema edukasi yang dirancang agar informasi lebih ringkas, visual, dan mudah dipahami." data-tools="Canva, Desain Grafis, Infografis">
+            <div class="project-media"><img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%23e879f9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1600' height='900' fill='%23100a1b'/%3E%3Ccircle cx='1320' cy='120' r='360' fill='url(%23g)' opacity='.35'/%3E%3Ctext x='100' y='430' fill='white' font-size='100' font-family='Arial' font-weight='700'%3EINFOGRAFIS%3C/text%3E%3C/svg%3E" alt="Preview proyek infografis digital"></div>
+            <div class="project-body"><span class="project-tag">Desain · Sekolah</span><h3>Infografis Digital</h3><p>Visual edukatif yang fokus pada informasi singkat dan mudah dipahami.</p><div class="tools"><span>Canva</span><span>Design</span></div></div>
+          </article>
+
+          <article class="glass project reveal" data-category="coding school" data-title="Portfolio Website" data-description="Website portfolio modern yang menggabungkan struktur semantic HTML, CSS responsif, dan JavaScript vanilla." data-tools="HTML, CSS, JavaScript">
+            <div class="project-media"><img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop stop-color='%239b5cff'/%3E%3Cstop offset='1' stop-color='%2360a5fa'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1600' height='900' fill='%23090712'/%3E%3Crect x='110' y='110' width='1380' height='680' rx='40' fill='%23171026' stroke='url(%23g)' stroke-width='5'/%3E%3Ctext x='230' y='430' fill='white' font-size='92' font-family='Arial' font-weight='700'%3EPORTFOLIO.%3C/text%3E%3C/svg%3E" alt="Preview proyek website portfolio"></div>
+            <div class="project-body"><span class="project-tag">Coding · Sekolah</span><h3>Portfolio Website</h3><p>Website personal responsif dengan fokus pada UI modern dan pengalaman pengguna.</p><div class="tools"><span>HTML</span><span>CSS</span><span>JS</span></div></div>
+          </article>
+
+          <article class="glass project reveal" data-category="school design" data-title="Generasi Pancasila di Era Digital" data-description="Konsep poster kelompok bertema nilai Pancasila dan perilaku positif di ruang digital." data-tools="Canva, Poster, PPKn">
+            <div class="project-media"><img loading="lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Crect width='1600' height='900' fill='%231b1029'/%3E%3Ccircle cx='800' cy='450' r='260' fill='%239b5cff' opacity='.28'/%3E%3Ctext x='180' y='420' fill='white' font-size='82' font-family='Arial' font-weight='700'%3EGENERASI%3C/text%3E%3Ctext x='180' y='520' fill='%23e879f9' font-size='82' font-family='Arial' font-weight='700'%3EPANCASILA%3C/text%3E%3C/svg%3E" alt="Preview poster Generasi Pancasila"></div>
+            <div class="project-body"><span class="project-tag">Sekolah · Desain</span><h3>Generasi Pancasila</h3><p>Poster edukatif tentang menjadi generasi Pancasila di era digital.</p><div class="tools"><span>Canva</span><span>Poster</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Kontak</span>
+          <h2>Punya ide? Mari ubah jadi <span class="gradient-text">karya.</span></h2>
+        </div>
+        <div class="contact-grid">
+          <article class="glass contact-card reveal">
+            <h3>Let's connect</h3>
+            <p>Untuk kolaborasi, proyek kreatif, atau sekadar ngobrol soal desain dan teknologi.</p>
+            <div class="contact-list">
+              <a class="contact-link" href="mailto:natsyanurilmaulida@gmail.com"><span class="contact-icon">✉</span><span>natsyanurilmaulida@gmail.com</span></a>
+              <a class="contact-link" href="https://instagram.com/xzsyaayaa" target="_blank" rel="noopener"><span class="contact-icon">◎</span><span>@xzsyaayaa</span></a>
+              <!-- GANTI DI SINI: tambahkan WhatsApp, LinkedIn, GitHub jika sudah ada -->
+            </div>
+          </article>
+
+          <article class="glass contact-card reveal">
+            <form id="contactForm">
+              <div class="field"><label for="name">Nama</label><input id="name" name="name" autocomplete="name" placeholder="Nama kamu" required></div>
+              <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="nama@email.com" required></div>
+              <div class="field"><label for="message">Pesan</label><textarea id="message" name="message" placeholder="Ceritakan ide atau pesanmu..." required></textarea></div>
+              <button class="btn btn-primary" type="submit">Kirim Pesan ↗</button>
+              <small id="formNote" style="color:var(--muted);">Form ini membuka aplikasi email kamu dan tidak membutuhkan backend.</small>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Natasya Nuril Maulida. Dibuat dengan ide & kreativitas.</span>
+      <span>Design · Code · Create</span>
+    </div>
+  </footer>
+
+  <div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div>
+          <span class="project-tag">Project detail</span>
+          <h3 id="modalTitle" style="font-size:1.7rem;margin-top:.35rem;"></h3>
+        </div>
+        <button class="modal-close" id="modalClose" type="button" aria-label="Tutup detail proyek">×</button>
+      </div>
+      <div class="modal-media"><img id="modalImage" alt=""></div>
+      <p id="modalDescription"></p>
+      <div class="tools" id="modalTools"></div>
+    </div>
+  </div>
+
+  <script>
+    const $ = (s, p=document) => p.querySelector(s);
+    const $$ = (s, p=document) => [...p.querySelectorAll(s)];
+
+    // Theme
+    const root = document.documentElement;
+    const themeToggle = $('#themeToggle');
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    if (savedTheme === 'light') root.classList.add('light');
+    function updateThemeButton() {
+      const light = root.classList.contains('light');
+      themeToggle.textContent = light ? '☾' : '☼';
+      themeToggle.setAttribute('aria-label', light ? 'Aktifkan mode gelap' : 'Aktifkan mode terang');
+    }
+    updateThemeButton();
+    themeToggle.addEventListener('click', () => {
+      root.classList.toggle('light');
+      localStorage.setItem('portfolio-theme', root.classList.contains('light') ? 'light' : 'dark');
+      updateThemeButton();
+    });
+
+    // Mobile navigation
+    const menuToggle = $('#menuToggle');
+    const navLinks = $('#navLinks');
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', open);
+      menuToggle.textContent = open ? '×' : '☰';
+    });
+    $$('#navLinks a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    }));
+
+    // Typing effect
+    const typing = $('#typing');
+    const words = ['Pelajar', 'Creative & Digital Enthusiast', 'UI/UX Explorer', 'Future Web Creator'];
+    let wi = 0, ci = 0, deleting = false;
+    function typeLoop() {
+      const word = words[wi];
+      typing.textContent = deleting ? word.slice(0, ci--) : word.slice(0, ci++);
+      if (!deleting && ci > word.length) { deleting = true; setTimeout(typeLoop, 1300); return; }
+      if (deleting && ci < 0) { deleting = false; wi = (wi + 1) % words.length; ci = 0; }
+      setTimeout(typeLoop, deleting ? 45 : 85);
+    }
+    typeLoop();
+
+    // Scroll reveal + animated skills/stats
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('show');
+        $$('.bar i', entry.target).forEach(bar => bar.style.width = bar.dataset.width);
+        $$('.stat strong', entry.target).forEach(counter => {
+          if (counter.dataset.done) return;
+          counter.dataset.done = '1';
+          const target = Number(counter.dataset.count);
+          const start = performance.now();
+          const duration = 850;
+          function count(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            counter.textContent = Math.floor(progress * target);
+            if (progress < 1) requestAnimationFrame(count);
+          }
+          requestAnimationFrame(count);
+        });
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: .14 });
+    $$('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Active navigation
+    const sections = $$('main section[id]');
+    const navAnchors = $$('#navLinks a');
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' });
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // Project filters
+    $$('.filter button').forEach(button => {
+      button.addEventListener('click', () => {
+        $$('.filter button').forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        $$('.project').forEach(card => {
+          const show = filter === 'all' || card.dataset.category.split(' ').includes(filter);
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+
+    // Project modal
+    const modal = $('#projectModal');
+    const modalTitle = $('#modalTitle');
+    const modalDesc = $('#modalDescription');
+    const modalImage = $('#modalImage');
+    const modalTools = $('#modalTools');
+    const closeModal = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+    };
+    $$('.project').forEach(card => {
+      card.addEventListener('click', () => {
+        modalTitle.textContent = card.dataset.title;
+        modalDesc.textContent = card.dataset.description;
+        modalTools.innerHTML = card.dataset.tools.split(',').map(x => `<span>${x.trim()}</span>`).join('');
+        modalImage.src = $('img', card).src;
+        modalImage.alt = card.dataset.title;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        $('#modalClose').focus();
+      });
+    });
+    $('#modalClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+
+    // Contact form -> mailto
+    $('#contactForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const name = $('#name').value.trim();
+      const email = $('#email').value.trim();
+      const message = $('#message').value.trim();
+      const subject = encodeURIComponent('Pesan dari portfolio — ' + name);
+      const body = encodeURIComponent(`Nama: ${name}\nEmail: ${email}\n\n${message}`);
+      window.location.href = `mailto:natsyanurilmaulida@gmail.com?subject=${subject}&body=${body}`;
+      $('#formNote').textContent = 'Aplikasi email sedang dibuka...';
+    });
+  </script>
+</body>
+</html>
